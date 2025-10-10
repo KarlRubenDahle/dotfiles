@@ -50,6 +50,9 @@ defaults write com.apple.TextEdit RichText -int 0
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
+# Reduces Transparancy or "liquid glass" effects
+defaults write com.apple.universalaccess reduceTransparency -bool true
+
 # Disable macOS “Solarium” transparency effects for a solid, non-ambient Finder appearance
 defaults write com.apple.finder com.apple.SwiftUI.DisableSolarium -bool true
 
