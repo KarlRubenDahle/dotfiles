@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Innstillinger for macOS – personlig oppsett
-# sist oppdatert for macOS sequoia 15.5
+# sist oppdatert for macOS Tahoe 26.01
 # Kommandoene kan kjøres én og én, eller som helhet
 
 # MANUELT: sett opp cmd+shift+1 for å aktivere fargefiltre (Systemvalg > Tilgjengelighet > Snarveier)
@@ -49,6 +49,9 @@ defaults write com.apple.TextEdit RichText -int 0
 # Always show scrollbars
 defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
+
+# Disable macOS “Solarium” transparency effects for a solid, non-ambient Finder appearance
+defaults write com.apple.finder com.apple.SwiftUI.DisableSolarium -bool true
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
