@@ -14,6 +14,17 @@ sudo -v
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
+# Installere xcode command line tools
+if ! xcode-select -p &>/dev/null; then
+    echo "Installerer Xcode Command Line Tools..."
+    xcode-select --install || true
+
+    # Vent til installer er ferdig (brukeren må klikke Install)
+    until xcode-select -p &>/dev/null; do
+        sleep 5
+    done
+fi
+
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -52,9 +63,6 @@ defaults write NSGlobalDomain AppleShowScrollBars -string "Always"
 
 # Reduces Transparancy or "liquid glass" effects
 defaults write com.apple.universalaccess reduceTransparency -bool true
-
-# Disable macOS “Solarium” transparency effects for a solid, non-ambient Finder appearance
-defaults write com.apple.finder com.apple.SwiftUI.DisableSolarium -bool true
 
 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40
